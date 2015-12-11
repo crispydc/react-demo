@@ -16,7 +16,7 @@ module.exports = function (grunt) {
         },
 
         eslint: {
-            src: ['js/**/*.js']
+            src: ['client/**/*.js']
         },
 
         browserify: {
@@ -29,14 +29,14 @@ module.exports = function (grunt) {
                     ]
                 },
                 files: {
-                    "./dist/bundle.js": ["./js/main.js"]
+                    "./dist/bundle.js": ["./client/main.js"]
                 }
             }
         },
         
         watch: {
             js_src: {
-                files: ['js/**/*.js'],
+                files: ['client/**/*.js'],
                 tasks: ['eslint', 'browserify']
             },
             html: {

@@ -2,10 +2,10 @@
   "name": "react-demo",
   "version": "1.0.0",
   "description": "Just playing around with react",
-  "main": "server.js",
+  "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/crispydc/react-demo#readme",
   "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
   },
