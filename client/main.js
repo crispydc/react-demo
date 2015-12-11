@@ -1,12 +1,15 @@
 'use strict';
 
-// main.js
 var React = require('react');
 var ReactDOM = require('react-dom');
 
+//components
+var CommentBox = require('./comment-box');
+
+//render comments box
 ReactDOM.render(
-    <h1>Hello, world!</h1>,
-    document.getElementById('example')
+    <CommentBox url="/api/comments" pollInterval={2000}/>,
+    document.getElementById('content')
 );
 
 module.exports = React;
