@@ -7,6 +7,13 @@ module.exports = function (grunt) {
         clean: {
             dist: ['dist']
         },
+        
+        copy : {
+            html : {
+                src : ['*.html'],
+                dest : 'dist/',
+            }
+        },
 
         eslint: {
             src: ['js/**/*.js']
@@ -31,6 +38,18 @@ module.exports = function (grunt) {
             js_src: {
                 files: ['js/**/*.js'],
                 tasks: ['eslint', 'browserify']
+            },
+            html: {
+                files: ['*.html'],
+                tasks: ['copy:html']
+            }
+        },
+        
+        connect: {
+            server: {
+                options: {
+                    base: 'dist'
+                }
             }
         }
     });
@@ -39,8 +58,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks("gruntify-eslint");
     grunt.loadNpmTasks("grunt-browserify");
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    
 
-    grunt.registerTask("build", ["clean", "eslint", "browserify"]);
-    grunt.registerTask("dev", ["build", "watch"]);
+    grunt.registerTask("build", ["clean", "eslint", "browserify", "copy"]);
+    grunt.registerTask("dev", ["build", "connect", "watch"]);
     grunt.registerTask("default", ["build"]);
 }
